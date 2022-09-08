@@ -26,11 +26,23 @@ class CategoryListLayout extends Table
     {
         return [
             TD::make('id', '#'),
-
+            TD::make('', 'Image')
+                ->width('70')
+                ->render(function (Category $category) {
+                    return "<img src='{$category->attachment[0]->url}' class='mw-100 d-block img-fluid'>";
+                }),
             TD::make('name', 'Name')
                 ->render(function (Category $category) {
                     return Link::make($category->name)
                         ->route('platform.categories.edit', $category);
+                }),
+            TD::make('created_at', 'Created At')
+                ->render(function (Category $category) {
+                    return $category->created_at->toDateString();
+                }),
+            TD::make('updated_at', 'Updated At')
+                ->render(function (Category $category) {
+                    return $category->updated_at->toDateString();
                 }),
         ];
     }

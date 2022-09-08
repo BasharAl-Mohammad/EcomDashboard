@@ -3,6 +3,7 @@
 namespace App\Orchid\Screens;
 
 use App\Models\Category;
+use Orchid\Screen\Layout;
 use Orchid\Screen\Screen;
 use Orchid\Attachment\File;
 use Illuminate\Http\Request;
@@ -22,17 +23,10 @@ class CategoryListScreen extends Screen
     public function query(Category $category): array
     {
         $category->load('attachment');
-        
+
         return [
             'categories' => Category::paginate()
         ];
-    }
-
-    public function upload(Category $category) {
-        
-        $file = new File($category->file('photo'));
-        $attachment = $file->load();
-        return response()->json();
     }
 
     /**
@@ -61,11 +55,7 @@ class CategoryListScreen extends Screen
         return [
             Link::make('Create new')
                 ->icon('pencil')
-                ->route('platform.category.edit'),
-            
-            Button::make('Update')
-                ->icon('note')
-                ->method('upload')
+                ->route('platform.categories.create'),
         ];
     }
 

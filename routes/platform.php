@@ -124,8 +124,11 @@ Route::screen('brand/{brand?}', BrandEditScreen::class)
 Route::screen('brands', BrandListScreen::class)
     ->name('platform.brand.list');
 
-Route::screen('category/{category?}', CategoryEditScreen::class)
-    ->name('platform.category.edit');
+Route::screen('categories/{category?}/edit', CategoryEditScreen::class)
+    ->name('platform.categories.edit');
+
+Route::screen('categories/create', CategoryEditScreen::class)
+    ->name('platform.categories.create');
 
 Route::screen('categories', CategoryListScreen::class)
-    ->name('platform.category.list');
+    ->name('platform.categories');

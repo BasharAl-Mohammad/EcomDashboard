@@ -2,11 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Screen\AsSource;
 use Orchid\Attachment\Attachable;
-use Orchid\Attachment\Models\Attachment;
 
 class Category extends Model
 {
@@ -23,7 +21,7 @@ class Category extends Model
 
     public function parent()
     {
-        return $this->belongsTo(Category::class,$this->parentColumn);
+        return $this->belongsTo(Category::class, $this->parentColumn);
     }
 
     public function children()
@@ -36,12 +34,8 @@ class Category extends Model
         return $this->children()->with('allChildren');
     }
 
-    public function product() {
+    public function product()
+    {
         return $this->hasMany(Product::class);
     }
-
-    // public function image()
-    // {
-    //     return $this->hasOne(Category::class, 'id' , 'description')->withDefault();
-    // }
 }

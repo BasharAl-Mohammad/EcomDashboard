@@ -29,11 +29,16 @@ class PlatformProvider extends OrchidServiceProvider
     {
         return [
 
-            Menu::make(__('Brands'))
-                ->icon('handbag')
-                ->route('platform.brand.list')
-                ->permission('platform.systems.users')
-                ->title(__('Database')),
+            Menu::make('Products Management')
+                ->icon('grid')
+                ->list([
+                    Menu::make(__('Categories'))
+                        ->icon('layers')
+                        ->route('platform.categories'),
+                    Menu::make(__('Brands'))
+                        ->icon('handbag')
+                        ->route('platform.brand.list'),
+                ]),
 
             Menu::make('Example screen')
                 ->icon('monitor')

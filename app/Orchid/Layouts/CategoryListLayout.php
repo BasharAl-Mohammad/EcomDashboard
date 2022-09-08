@@ -25,17 +25,13 @@ class CategoryListLayout extends Table
     public function columns(): array
     {
         return [
-            TD::make('name', 'Category Name')
+            TD::make('id', '#'),
+
+            TD::make('name', 'Name')
                 ->render(function (Category $category) {
                     return Link::make($category->name)
-                        ->route('platform.category.edit', $category);
+                        ->route('platform.categories.edit', $category);
                 }),
-                TD::make('id', 'ID')
-                    ->width('150')
-                    ->render(function (Category $category) {
-                        // Please use view('path')
-                        return "<span class='small text-muted mt-1 mb-0'># {$category->attachment()->get()}</span>";
-                    }),
         ];
     }
 }

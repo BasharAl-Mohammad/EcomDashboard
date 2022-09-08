@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Orchid\Screens;
+namespace App\Orchid\Screens\Category;
 
 use App\Models\Category;
 use Orchid\Screen\Layout;
@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Link;
 use Illuminate\Http\UploadedFile;
 use Orchid\Screen\Actions\Button;
-use App\Orchid\Layouts\CategoryListLayout;
+use App\Orchid\Layouts\ListLayouts\CategoryListLayout;
 
 class CategoryListScreen extends Screen
 {

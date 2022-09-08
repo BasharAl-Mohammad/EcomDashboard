@@ -26,7 +26,7 @@ class StoreCategoryRequest extends FormRequest
         return [
             'category.name' => 'required|unique:categories,name',
             'category.description' => 'nullable',
-            'category.image' => 'nullable',
+            'category.attachment' => 'nullable',
             'category.parent_id' => 'nullable',
             'category.status' => 'required'
         ];

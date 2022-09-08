@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Orchid\Screens;
+namespace App\Orchid\Screens\Category;
 
 use App\Models\Category;
-use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 use Illuminate\Http\Request;
+use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Upload;
 use Orchid\Screen\Actions\Button;
+use Orchid\Screen\Fields\Cropper;
 use Orchid\Support\Facades\Alert;
 use Orchid\Screen\Fields\CheckBox;
 use Orchid\Screen\Fields\Relation;
@@ -103,8 +104,7 @@ class CategoryEditScreen extends Screen
 
                 Upload::make('category.attachment')
                     ->maxFiles(1)
-                    ->acceptedFiles('image/*')
-                    ->targetRelativeUrl(),
+                    ->acceptedFiles('image/*'),
 
                 Relation::make('category.parent_id')
                     ->title('Parent Category')
@@ -130,7 +130,7 @@ class CategoryEditScreen extends Screen
         $validated = $request->validated();
 
         $category->fill($validated['category'])->save();
-
+        
         $category->attachment()->syncWithoutDetaching(
             $request->input('category.attachment', [])
         );

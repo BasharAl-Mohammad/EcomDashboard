@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Screen\AsSource;
 use Orchid\Attachment\Attachable;
+use Orchid\Attachment\Models\Attachment;
 
 class Category extends Model
 {

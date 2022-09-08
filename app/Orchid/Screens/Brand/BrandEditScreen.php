@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Orchid\Screens;
+namespace App\Orchid\Screens\Brand;
 
 use Orchid\Screen\Screen;
 
@@ -112,7 +112,7 @@ class BrandEditScreen extends Screen
     }
 
     /**
-     * @param Post    $brand
+     * @param Brand    $brand
      * @param Request $request
      *
      * @return \Illuminate\Http\RedirectResponse
@@ -122,13 +122,13 @@ class BrandEditScreen extends Screen
         $validated = $request->validated();
         $brand->fill($validated['brand'])->save();
 
-        Alert::info('You have successfully created a post.');
+        Alert::info('You have successfully created a brand.');
 
         return redirect()->route('platform.brands');
     }
 
     /**
-     * @param Post $post
+     * @param Brand $brand
      *
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception

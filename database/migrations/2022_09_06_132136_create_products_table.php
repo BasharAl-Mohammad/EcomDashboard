@@ -22,8 +22,8 @@ return new class extends Migration
             $table->integer('sale_price');
             $table->integer('sku');
             $table->integer('quantity');
-            $table->string('featured_image');
-            $table->string('images');
+            $table->string('featured_image')->nullable();
+            $table->string('images')->nullable();
             $table->foreignId('category_id')->references('id')->on('categories');
             $table->foreignId('brand_id')->references('id')->on('brands');
             $table->boolean('status');

@@ -38,6 +38,9 @@ class PlatformProvider extends OrchidServiceProvider
                     Menu::make(__('Brands'))
                         ->icon('handbag')
                         ->route('platform.brands'),
+                    Menu::make(__('Products'))
+                        ->icon('fa.warehouse-solid')
+                        ->route('platform.products'),
                 ]),
 
             // Menu::make('Example screen')

@@ -1,17 +1,15 @@
 <?php
 
-namespace App\Orchid\Screens;
+namespace App\Orchid\Screens\Product;
 
-
-use App\Models\Brand;
+use App\Models\Product;
 use Orchid\Screen\Screen;
 use Orchid\Screen\Actions\Link;
-use App\Orchid\Layouts\BrandListLayout;
+use App\Orchid\Layouts\ListLayouts\ProductListLayout;
 
-
-class BrandListScreen extends Screen
+class ProductListScreen extends Screen
 {
-     /**
+    /**
      * Query data.
      *
      * @return array
@@ -19,7 +17,7 @@ class BrandListScreen extends Screen
     public function query(): array
     {
         return [
-            'brands' => Brand::paginate()
+            'products' => Product::paginate()
         ];
     }
 
@@ -28,7 +26,7 @@ class BrandListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Brands';
+        return 'Product';
     }
 
     /**
@@ -36,7 +34,7 @@ class BrandListScreen extends Screen
      */
     public function description(): ?string
     {
-        return "All brands Available";
+        return "All products";
     }
 
     /**
@@ -47,9 +45,9 @@ class BrandListScreen extends Screen
     public function commandBar(): array
     {
         return [
-            Link::make('Add a new Brand')
-                ->icon('plus')
-                ->route('platform.brands.create')
+            Link::make('Create new')
+                ->icon('pencil')
+                ->route('platform.products.create')
         ];
     }
 
@@ -61,7 +59,7 @@ class BrandListScreen extends Screen
     public function layout(): array
     {
         return [
-            BrandListLayout::class
+            ProductListLayout::class
         ];
     }
 }

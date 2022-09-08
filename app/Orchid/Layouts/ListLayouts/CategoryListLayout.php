@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Orchid\Layouts;
+namespace App\Orchid\Layouts\ListLayouts;
 
 use Orchid\Screen\TD;
 use App\Models\Category;
@@ -29,12 +29,16 @@ class CategoryListLayout extends Table
             TD::make('', 'Image')
                 ->width('70')
                 ->render(function (Category $category) {
-                        $string="REGISTER 11223344 here";
+                    if(count($category->attachment)!=0)
+                    {
                         $s = explode("http://localhost/", $category->attachment[0]->url);
                         unset($s[0]);
                         $s = implode("", $s);
                     return "<img src='/$s' class='mw-100 d-block img-fluid'>";
-                    // return "<img src='/storage/2022/09/08/13e5605f31ed419d3fe8e4badb3db250ca7c64c2.png' class='mw-100 d-block img-fluid'>";
+                    } else {
+                        return "<span></span>";
+                    }
+                        
                 }),
             TD::make('name', 'Name')
                 ->render(function (Category $category) {

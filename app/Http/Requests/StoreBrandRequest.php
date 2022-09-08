@@ -23,7 +23,7 @@ class StoreBrandRequest extends FormRequest
      */
     public function rules()
     {
-        $regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
+        $regex = '/^(https?:\/\/)?([\da-z\.-]+)?.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
         return [
             'brand.name' => 'required',
             'brand.description' => 'required',

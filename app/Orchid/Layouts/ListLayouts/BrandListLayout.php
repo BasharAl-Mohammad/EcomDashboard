@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Orchid\Layouts;
+namespace App\Orchid\Layouts\ListLayouts;
 
 use App\Models\Brand;
 use Orchid\Screen\TD;

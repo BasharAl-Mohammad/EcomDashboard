@@ -5,16 +5,18 @@ declare(strict_types=1);
 use Tabuna\Breadcrumbs\Trail;
 use Illuminate\Support\Facades\Route;
 use App\Orchid\Screens\PlatformScreen;
-use App\Orchid\Screens\BrandEditScreen;
-use App\Orchid\Screens\BrandListScreen;
-use App\Orchid\Screens\CategoryEditScreen;
-use App\Orchid\Screens\CategoryListScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
+use App\Orchid\Screens\Brand\BrandEditScreen;
+use App\Orchid\Screens\Brand\BrandListScreen;
 use App\Orchid\Screens\Examples\ExampleScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
+use App\Orchid\Screens\Product\ProductEditScreen;
+use App\Orchid\Screens\Product\ProductListScreen;
+use App\Orchid\Screens\Category\CategoryEditScreen;
+use App\Orchid\Screens\Category\CategoryListScreen;
 use App\Orchid\Screens\Examples\ExampleCardsScreen;
 use App\Orchid\Screens\Examples\ExampleChartsScreen;
 use App\Orchid\Screens\Examples\ExampleFieldsScreen;
@@ -135,3 +137,12 @@ Route::screen('categories/create', CategoryEditScreen::class)
 
 Route::screen('categories', CategoryListScreen::class)
     ->name('platform.categories');
+
+Route::screen('products/{product?}/edit', ProductEditScreen::class)
+    ->name('platform.products.edit');
+
+Route::screen('products/create', ProductEditScreen::class)
+    ->name('platform.products.create');
+
+Route::screen('products', ProductListScreen::class)
+    ->name('platform.products');

@@ -118,11 +118,14 @@ Route::screen('example-advanced', ExampleFieldsAdvancedScreen::class)->name('pla
 
 //Route::screen('idea', Idea::class, 'platform.screens.idea');
 
-Route::screen('brand/{brand?}', BrandEditScreen::class)
-    ->name('platform.brand.edit');
+Route::screen('brands/{brand?}/edit', BrandEditScreen::class)
+    ->name('platform.brands.edit');
+
+Route::screen('brands/create', BrandEditScreen::class)
+    ->name('platform.brands.create');
 
 Route::screen('brands', BrandListScreen::class)
-    ->name('platform.brand.list');
+    ->name('platform.brands');
 
 Route::screen('categories/{category?}/edit', CategoryEditScreen::class)
     ->name('platform.categories.edit');

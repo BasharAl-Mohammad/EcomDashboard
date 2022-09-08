@@ -29,7 +29,12 @@ class CategoryListLayout extends Table
             TD::make('', 'Image')
                 ->width('70')
                 ->render(function (Category $category) {
-                    return "<img src='{$category->attachment[0]->url}' class='mw-100 d-block img-fluid'>";
+                        $string="REGISTER 11223344 here";
+                        $s = explode("http://localhost/", $category->attachment[0]->url);
+                        unset($s[0]);
+                        $s = implode("", $s);
+                    return "<img src='/$s' class='mw-100 d-block img-fluid'>";
+                    // return "<img src='/storage/2022/09/08/13e5605f31ed419d3fe8e4badb3db250ca7c64c2.png' class='mw-100 d-block img-fluid'>";
                 }),
             TD::make('name', 'Name')
                 ->render(function (Category $category) {

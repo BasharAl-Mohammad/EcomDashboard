@@ -15,6 +15,7 @@ use Orchid\Screen\Fields\Relation;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Support\Facades\Layout;
 use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
 
 class CategoryEditScreen extends Screen
 {
@@ -66,12 +67,12 @@ class CategoryEditScreen extends Screen
         return [
             Button::make('Create category')
                 ->icon('pencil')
-                ->method('createOrUpdate')
+                ->method('create')
                 ->canSee(!$this->category->exists),
 
             Button::make('Update')
                 ->icon('note')
-                ->method('createOrUpdate')
+                ->method('update')
                 ->canSee($this->category->exists),
 
             Button::make('Remove')
@@ -102,7 +103,8 @@ class CategoryEditScreen extends Screen
 
                 Upload::make('category.attachment')
                     ->maxFiles(1)
-                    ->acceptedFiles('image/*'),
+                    ->acceptedFiles('image/*')
+                    ->targetRelativeUrl(),
 
                 Relation::make('category.parent_id')
                     ->title('Parent Category')
@@ -123,7 +125,22 @@ class CategoryEditScreen extends Screen
      * @return \Illuminate\Http\RedirectResponse
      */
 
-    public function createOrUpdate(Category $category, StoreCategoryRequest $request)
+    public function create(Category $category, StoreCategoryRequest $request)
+    {
+        $validated = $request->validated();
+
+        $category->fill($validated['category'])->save();
+
+        $category->attachment()->syncWithoutDetaching(
+            $request->input('category.attachment', [])
+        );
+
+        Alert::info('You have successfully created a category.');
+
+        return redirect()->route('platform.categories');
+    }
+
+    public function update(Category $category, UpdateCategoryRequest $request)
     {
         $validated = $request->validated();
 

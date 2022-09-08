@@ -26,19 +26,17 @@ class BrandListLayout extends Table
             TD::make('name', 'Name')
                 ->render(function (Brand $brand) {
                     return Link::make($brand->name)
-                        ->route('platform.brand.edit', $brand);
+                        ->route('platform.brands.edit', $brand);
                 }),
 
             TD::make('website', 'Website')
                 ->render(function (Brand $brand) {
-                    return Link::make($brand->website)
-                        ->route('platform.brand.edit', $brand);
+                    return Link::make($brand->website);
                 }),
                 
             TD::make('status', 'Status')
                 ->render(function (Brand $brand) {
-                    return Link::make(($brand->status) ? 'Active' : 'Not Active')
-                        ->route('platform.brand.edit', $brand);
+                    return Link::make(($brand->status) ? 'Active' : 'Not Active');
                 }),
         ];
     }

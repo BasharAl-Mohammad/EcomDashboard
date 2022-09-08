@@ -124,7 +124,7 @@ class BrandEditScreen extends Screen
 
         Alert::info('You have successfully created a post.');
 
-        return redirect()->route('platform.brand.list');
+        return redirect()->route('platform.brands');
     }
 
     /**
@@ -139,6 +139,6 @@ class BrandEditScreen extends Screen
 
         Alert::info('You have successfully deleted the brand.');
 
-        return redirect()->route('platform.brand.list');
+        return redirect()->route('platform.brands');
     }
 }

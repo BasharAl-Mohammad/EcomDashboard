@@ -197,6 +197,7 @@ class ProductEditScreen extends Screen
      */
     public function remove(Product $product)
     {
+        
         $product->delete();
 
         Alert::info('You have successfully deleted the post.');

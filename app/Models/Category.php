@@ -35,7 +35,7 @@ class Category extends Model
         return $this->children()->with('allChildren');
     }
 
-    public function product()
+    public function products()
     {
         return $this->hasMany(Product::class);
     }
